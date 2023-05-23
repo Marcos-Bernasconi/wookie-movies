@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [moviesInformation, setMoviesInformation] = useState({});
+  const [moviesInformation, setMoviesInformation] = useState();
 
   useEffect(() => {
     fetch("http://localhost:3000/api/movies")
@@ -10,14 +10,16 @@ export default function Home() {
         return response.json();
       })
       .then((movies) => {
-        setMoviesInformation({ movies });
+        setMoviesInformation(movies);
       });
   }, []);
 
   useEffect(() => {
-    console.log(moviesInformation);
-    groupByGenre(moviesInformation);
+    if (moviesInformation != null) {
+      groupByGenre(moviesInformation);
+    }
   }, [moviesInformation]);
+
   return (
     <>
       <main className=" min-h-screen w-screen overflow-x-hidden bg-neutral-200 pb-16">
@@ -128,29 +130,27 @@ function Genre({ genreName = "Action" }: any, { genreMovies }: any) {
   );
 }
 
-type film = {
+type movieInfoNeeded = {
   id: number;
-  genres: string[];
+  url: string;
+  title: string;
 };
 
-function groupByGenre({ fetchedData }: any) {
-  const movieList: film[] = [
-    { id: 1, genres: ["Action", "Crime", "Drama"] },
-    { id: 2, genres: ["History", "Biography", "Animation"] },
-    { id: 3, genres: ["Action", "Crime", "Drama"] },
-    { id: 4, genres: ["Thriller", "Animation", "Mystery"] },
-    { id: 5, genres: ["Biography", "War", "History"] },
-    { id: 6, genres: ["Animation", "Mystery", "Drama"] },
-  ];
-
-  let groupGenre: { [key: string]: number[] } = {};
-
-  for (let movie of movieList) {
+function groupByGenre(fetchedData: any) {
+  const movieList = fetchedData;
+  let groupGenre: any = {};
+  for (let movie of movieList.movies) {
     for (let genre of movie.genres) {
       if (groupGenre[genre] != undefined) {
-        groupGenre[genre].push(movie.id);
+        groupGenre[genre].push({
+          id: movie.id,
+          url: movie.backdrop,
+          title: movie.title,
+        });
       } else {
-        groupGenre[genre] = [movie.id];
+        groupGenre[genre] = [
+          { id: movie.id, url: movie.backdrop, title: movie.title },
+        ];
       }
     }
   }
