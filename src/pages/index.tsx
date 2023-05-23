@@ -36,7 +36,7 @@ export default function Home() {
             Category Name
           </h2>
           <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <Movie imageUrl="https://wookie.codesubmit.io/static/backdrops/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg" />
             <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
             <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
             <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
@@ -74,6 +74,21 @@ export default function Home() {
           Copyright © 2023 Wookie Movies
         </p>
       </footer>
+    </>
+  );
+}
+
+function Movie({ imageUrl }: any) {
+  console.log(imageUrl);
+  return (
+    <>
+      <div className="h-[10rem] w-[15rem] flex-shrink-0 overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white transition hover:scale-[1.04]">
+        <img
+          className="h-full object-cover"
+          src={imageUrl}
+          alt="Movie Thumbnail  "
+        />
+      </div>
     </>
   );
 }
