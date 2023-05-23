@@ -30,7 +30,7 @@ export default function Home() {
             </div>
           </div>
         </nav>
-
+        <Genre />
         <section className="mt-16 w-screen overflow-hidden">
           <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
             Category Name
@@ -78,17 +78,35 @@ export default function Home() {
   );
 }
 
-function Movie({ imageUrl }: any) {
-  console.log(imageUrl);
+type url = {
+  imageUrl: string;
+};
+
+function Movie({ imageUrl }: url) {
   return (
     <>
       <div className="h-[10rem] w-[15rem] flex-shrink-0 overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white transition hover:scale-[1.04]">
         <img
           className="h-full object-cover"
           src={imageUrl}
-          alt="Movie Thumbnail  "
+          alt="Movie Thumbnail"
         />
       </div>
+    </>
+  );
+}
+
+function Genre({ genreName = "Action" }: any, { genreMovies }: any) {
+  return (
+    <>
+      <section className="mt-16 w-screen overflow-hidden">
+        <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
+          {genreName}
+        </h2>
+        <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+          <Movie imageUrl="https://wookie.codesubmit.io/static/backdrops/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg" />
+        </div>
+      </section>
     </>
   );
 }
