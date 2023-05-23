@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [moviesInformation, setMoviesInformation] = useState();
+  const [moviesGroupedByGenre, setMoviesGroupedByGenre] = useState();
 
   useEffect(() => {
     fetch("http://localhost:3000/api/movies")
@@ -16,7 +17,8 @@ export default function Home() {
 
   useEffect(() => {
     if (moviesInformation != null) {
-      groupByGenre(moviesInformation);
+      const groupedMovies = groupByGenre(moviesInformation);
+      setMoviesGroupedByGenre(groupedMovies);
     }
   }, [moviesInformation]);
 
@@ -49,7 +51,10 @@ export default function Home() {
             </div>
           </div>
         </nav>
-        <Genre />
+        {moviesGroupedByGenre && (
+          <GenreSections genres={moviesGroupedByGenre} />
+        )}
+
         <section className="mt-16 w-screen overflow-hidden">
           <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
             Category Name
@@ -115,17 +120,21 @@ function Movie({ imageUrl }: url) {
   );
 }
 
-function Genre({ genreName = "Action" }: any, { genreMovies }: any) {
+function GenreSections({ genres }: any) {
   return (
     <>
-      <section className="mt-16 w-screen overflow-hidden">
-        <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
-          {genreName}
-        </h2>
-        <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
-          <Movie imageUrl="https://wookie.codesubmit.io/static/backdrops/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg" />
-        </div>
-      </section>
+      {Object.entries(genres).map((genre: any, data: any) => (
+        <section className="mt-16 w-screen overflow-hidden">
+          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
+            {genre[0]}
+          </h2>
+          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+            {genre[1].map((movie: any) => {
+              return <Movie imageUrl={movie.url} />;
+            })}
+          </div>
+        </section>
+      ))}
     </>
   );
 }
@@ -155,4 +164,5 @@ function groupByGenre(fetchedData: any) {
     }
   }
   console.log(groupGenre);
+  return groupGenre;
 }
