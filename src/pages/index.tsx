@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <main className="relative min-h-screen w-screen overflow-x-hidden bg-neutral-200 pb-16">
+      <main className=" min-h-screen w-screen overflow-x-hidden bg-neutral-200 pb-16">
         <nav className="sticky top-0 flex flex-row justify-start  bg-white p-4">
           <h1 className=" text-xl font-bold tracking-wide text-black">
             Wookie
@@ -30,9 +30,45 @@ export default function Home() {
             </div>
           </div>
         </nav>
+
+        <section className="mt-16 w-screen overflow-hidden">
+          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
+            Category Name
+          </h2>
+          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+          </div>
+        </section>
+
+        <section className="mt-16 w-screen overflow-hidden">
+          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
+            Category Name
+          </h2>
+          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+          </div>
+        </section>
+
+        <section className="mt-16 w-screen overflow-hidden">
+          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
+            Category Name
+          </h2>
+          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
+          </div>
+        </section>
       </main>
 
-      <footer className="relative bg-white px-8 pb-16 pt-8">
+      <footer className=" bg-white px-8 pb-16 pt-8">
         <h3 className="text-lg font-semibold text-black">Wookie Movies</h3>
         <p className="text-sm text-neutral-500">
           Copyright © 2023 Wookie Movies
