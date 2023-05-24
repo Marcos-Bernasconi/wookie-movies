@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Footer } from "../Components/Footer";
 import { GenreSections } from "@/Components/GenreSections";
-import { LoadAnimation } from "@/Components/loadAnimation";
+import { LoadAnimation } from "@/Components/LoadAnimation";
 
 export default function Home() {
   const [moviesInformation, setMoviesInformation] = useState();
