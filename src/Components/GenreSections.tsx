@@ -10,7 +10,9 @@ export function GenreSections({ genres }: any) {
           </h2>
           <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4 md:gap-12">
             {genre[1].map((movie: any) => {
-              return <Movie imageUrl={movie.url} key={movie.id} />;
+              return (
+                <Movie imageUrl={movie.url} key={movie.id} slug={movie.slug} />
+              );
             })}
           </div>
         </section>

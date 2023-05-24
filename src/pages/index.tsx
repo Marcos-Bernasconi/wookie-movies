@@ -58,10 +58,16 @@ function groupByGenre(fetchedData: any) {
           id: movie.id,
           url: movie.backdrop,
           title: movie.title,
+          slug: movie.slug,
         });
       } else {
         groupGenre[genre] = [
-          { id: movie.id, url: movie.backdrop, title: movie.title },
+          {
+            id: movie.id,
+            url: movie.backdrop,
+            title: movie.title,
+            slug: movie.slug,
+          },
         ];
       }
     }
