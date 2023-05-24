@@ -98,7 +98,7 @@ function Movie({ imageUrl }: url) {
 function GenreSections({ genres }: any) {
   return (
     <>
-      {Object.entries(genres).map((genre: any, data: any) => (
+      {Object.entries(genres).map((genre: any) => (
         <section className="mt-16  w-screen overflow-hidden" key={genre[0]}>
           <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
             {genre[0]}
@@ -138,12 +138,14 @@ function groupByGenre(fetchedData: any) {
       }
     }
   }
-  console.log(groupGenre);
+  // console.log(groupGenre);
   return groupGenre;
 }
 
 function SearchInput() {
+  const [foundMovies, setFoundMovies] = useState();
   const [inputText, setInputText] = useState("");
+  const [menuState, setMenuState] = useState(false);
   const input: any = useRef();
 
   useEffect(() => {
@@ -156,7 +158,10 @@ function SearchInput() {
       body: JSON.stringify({ query: inputText }),
     })
       .then((res) => res.json())
-      .then((found) => console.log(found))
+      .then((res) => {
+        // console.log(res.movies);
+        setFoundMovies(res.movies);
+      })
       .catch((e) => {
         //Handle error
         console.log(e.message);
@@ -164,7 +169,7 @@ function SearchInput() {
   }, [inputText]);
 
   return (
-    <div className="ml-auto flex-grow-0 lg:m-0">
+    <div className="relative ml-auto flex-grow-0 lg:m-0">
       <div className="flex rounded-md border-2 border-neutral-200 bg-neutral-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -183,12 +188,47 @@ function SearchInput() {
           onChange={() => {
             setInputText(input.current.value);
           }}
+          onFocus={() => {
+            setMenuState(true);
+            console.log("focused" + menuState);
+          }}
+          onBlur={() => {
+            setMenuState(false);
+            console.log("blurred" + menuState);
+          }}
           placeholder="Search"
           type="text"
           ref={input}
           className="max-w-[8rem] px-2 text-neutral-500 outline-0 md:max-w-[12rem]"
         />
       </div>
+
+      <SearchResult foundMovies={foundMovies} state={menuState} />
     </div>
+  );
+}
+
+function SearchResult({ foundMovies, state }: any) {
+  let results;
+  console.log(state);
+  if (foundMovies != null && state == true) {
+    results = foundMovies.map((movie: any) => {
+      // console.log(movie);
+      return (
+        <li className=" cursor-pointer p-2 hover:bg-neutral-100" key={movie.id}>
+          {movie.title}
+        </li>
+      );
+    });
+  }
+  // console.log(results);
+  return (
+    <>
+      <div className="absolute max-w-[8rem] rounded-lg bg-white p-2 ">
+        <ul className="flex max-h-[10rem] flex-col divide-y-2 divide-neutral-100 overflow-y-auto ">
+          {results}
+        </ul>
+      </div>
+    </>
   );
 }
