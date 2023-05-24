@@ -21,7 +21,7 @@ export default function Home() {
       <main className=" min-h-screen w-screen  bg-neutral-200 ">
         <section className="pt-8">
           <div className=" mx-auto h-[20rem] w-[14rem] rounded-xl  border-2 border-neutral-200 bg-white"></div>
-          <div className="mt-6 bg-white px-8 pt-4">
+          <div className="mt-6 bg-white px-8 pb-8  pt-4">
             <div className="flex flex-row items-baseline gap-4 ">
               <p className="text-3xl font-semibold">
                 Spider-Man: Into the Spider-Verse
@@ -87,6 +87,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <hr />
       <Footer />
     </>
   );
