@@ -8,7 +8,7 @@ export function SearchInput() {
   const input: any = useRef();
 
   useEffect(() => {
-    console.log(inputText);
+    // console.log(inputText);
     fetch("http://localhost:3000/api/search", {
       method: "POST",
       headers: {
@@ -49,11 +49,11 @@ export function SearchInput() {
           }}
           onFocus={() => {
             setMenuState(true);
-            console.log("focused" + menuState);
+            // console.log("focused" + menuState);
           }}
           onBlur={() => {
             setMenuState(false);
-            console.log("blurred" + menuState);
+            // console.log("blurred" + menuState);
           }}
           placeholder="Search"
           type="text"

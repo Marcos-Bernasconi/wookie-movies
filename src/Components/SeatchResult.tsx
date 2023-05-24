@@ -1,6 +1,6 @@
 export function SearchResult({ foundMovies, state }: any) {
   let results;
-  console.log(state);
+  // console.log(state);
   if (foundMovies != null && state == true) {
     results = foundMovies.map((movie: any) => {
       // console.log(movie);
