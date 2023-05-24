@@ -9,7 +9,7 @@ export function SearchInput() {
 
   useEffect(() => {
     // console.log(inputText);
-    fetch("http://localhost:3000/api/search", {
+    fetch("/api/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

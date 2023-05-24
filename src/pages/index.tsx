@@ -10,7 +10,7 @@ export default function Home() {
   const [moviesGroupedByGenre, setMoviesGroupedByGenre] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/movies")
+    fetch("/api/movies")
       .then((response) => {
         return response.json();
       })
