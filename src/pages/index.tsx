@@ -24,12 +24,31 @@ export default function Home() {
 
   return (
     <>
-      <main className=" min-h-screen w-screen overflow-x-hidden bg-neutral-200 pb-16">
-        <nav className="sticky top-0 flex flex-row justify-start  bg-white p-4">
-          <h1 className=" text-xl font-bold tracking-wide text-black">
-            Wookie
+      <main className=" min-h-screen w-screen  bg-neutral-200 pb-16">
+        <nav className="sticky top-0 z-10 flex flex-row items-center  justify-start bg-white p-4 md:px-16">
+          <h1 className="hidden cursor-pointer text-xl font-bold tracking-wide text-black md:block ">
+            Wookie Movies
           </h1>
-          <div className="ml-auto">
+          <h1 className=" cursor-pointer text-xl font-bold tracking-wide text-black md:hidden">
+            Wk Movies
+          </h1>
+
+          <ul className="mx-auto hidden flex-grow-0 flex-row gap-12 lg:flex">
+            <li className="cursor-pointer text-neutral-500 hover:text-neutral-800">
+              Home
+            </li>
+            <li className="cursor-pointer text-neutral-500 hover:text-neutral-800">
+              TV Shows
+            </li>
+            <li className="cursor-pointer text-neutral-500 hover:text-neutral-800">
+              Movies
+            </li>
+            <li className="cursor-pointer text-neutral-500 hover:text-neutral-800">
+              My List
+            </li>
+          </ul>
+
+          <div className="ml-auto flex-grow-0 lg:m-0">
             <div className="flex rounded-md border-2 border-neutral-200 bg-neutral-50">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,8 +64,9 @@ export default function Home() {
               </svg>
 
               <input
+                placeholder="Search"
                 type="text"
-                className="max-w-[7rem] px-2 text-neutral-500 outline-0"
+                className="max-w-[8rem] px-2 text-neutral-500 outline-0 md:max-w-[12rem]"
               />
             </div>
           </div>
@@ -55,19 +75,7 @@ export default function Home() {
           <GenreSections genres={moviesGroupedByGenre} />
         )}
 
-        <section className="mt-16 w-screen overflow-hidden">
-          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
-            Category Name
-          </h2>
-          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
-            <Movie imageUrl="https://wookie.codesubmit.io/static/backdrops/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg" />
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-          </div>
-        </section>
-
-        <section className="mt-16 w-screen overflow-hidden">
+        {/* <section className="mt-16 w-screen overflow-hidden">
           <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
             Category Name
           </h2>
@@ -77,19 +85,7 @@ export default function Home() {
             <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
             <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
           </div>
-        </section>
-
-        <section className="mt-16 w-screen overflow-hidden">
-          <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
-            Category Name
-          </h2>
-          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-            <div className="h-[10rem] w-[15rem] flex-shrink-0 rounded-lg border-2 border-neutral-200 bg-white"></div>
-          </div>
-        </section>
+        </section> */}
       </main>
 
       <footer className=" bg-white px-8 pb-16 pt-8">
@@ -109,7 +105,7 @@ type url = {
 function Movie({ imageUrl }: url) {
   return (
     <>
-      <div className="h-[10rem] w-[15rem] flex-shrink-0 overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white transition hover:scale-[1.04]">
+      <div className="z-0 h-[10rem]  w-[15rem] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl  bg-white shadow-xl transition-transform	 hover:scale-[0.98]  md:h-[13rem] md:w-[22rem] ">
         <img
           className="h-full object-cover"
           src={imageUrl}
@@ -124,11 +120,11 @@ function GenreSections({ genres }: any) {
   return (
     <>
       {Object.entries(genres).map((genre: any, data: any) => (
-        <section className="mt-16 w-screen overflow-hidden" key={genre[0]}>
+        <section className="mt-16  w-screen overflow-hidden" key={genre[0]}>
           <h2 className="ml-4 text-2xl font-semibold text-neutral-700">
             {genre[0]}
           </h2>
-          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4">
+          <div className="mt-4 flex  flex-row gap-4 overflow-auto px-4 md:gap-12">
             {genre[1].map((movie: any) => {
               return <Movie imageUrl={movie.url} key={movie.id} />;
             })}
