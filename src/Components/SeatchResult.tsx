@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function SearchResult({ foundMovies, state }: any) {
   let results;
   // console.log(state);
@@ -5,9 +7,14 @@ export function SearchResult({ foundMovies, state }: any) {
     results = foundMovies.map((movie: any) => {
       // console.log(movie);
       return (
-        <li className=" cursor-pointer p-2 hover:bg-neutral-100" key={movie.id}>
-          {movie.title}
-        </li>
+        <Link href={`/movie/${movie.slug}`} key={movie.id}>
+          <li
+            className=" cursor-pointer p-2 hover:bg-neutral-100"
+            key={movie.id}
+          >
+            {movie.title}
+          </li>
+        </Link>
       );
     });
   }
