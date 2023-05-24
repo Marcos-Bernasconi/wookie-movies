@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className=" min-h-screen w-screen  bg-neutral-200 ">
+      <main className=" w-screen  bg-neutral-200 ">
         <section className="pt-8">
           <div className=" mx-auto h-[20rem] w-[14rem] rounded-xl  border-2 border-neutral-200 bg-white"></div>
           <div className="mt-6 bg-white px-8 pb-8  pt-4">
@@ -88,7 +88,9 @@ export default function Home() {
         </section>
       </main>
       <hr />
-      <Footer />
+      <div className="b-0 absolute w-full">
+        <Footer />
+      </div>
     </>
   );
 }

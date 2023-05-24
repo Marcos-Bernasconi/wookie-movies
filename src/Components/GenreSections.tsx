@@ -1,4 +1,4 @@
-import { Movie } from "../Components/Movie";
+import { Movie } from "./Movie";
 
 export function GenreSections({ genres }: any) {
   return (

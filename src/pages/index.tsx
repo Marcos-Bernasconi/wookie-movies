@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Footer } from "../Components/Footer";
-import { GenreSections } from "@/Components/GenreSelections";
+import { GenreSections } from "@/Components/GenreSections";
 import { LoadAnimation } from "@/Components/loadAnimation";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="  w-screen  bg-neutral-200 ">
+      <main className=" w-screen  bg-neutral-200  ">
         <Navbar />
         {moviesGroupedByGenre ? (
           <GenreSections genres={moviesGroupedByGenre} />
