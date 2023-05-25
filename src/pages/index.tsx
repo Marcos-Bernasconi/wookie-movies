@@ -25,6 +25,9 @@ export default function Home() {
       .then((movies) => {
         //save Movies in the state
         setMoviesInformation(movies);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, []);
 
