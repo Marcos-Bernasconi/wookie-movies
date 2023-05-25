@@ -5,7 +5,7 @@ export function SearchInput() {
   const [foundMovies, setFoundMovies] = useState();
   const [inputText, setInputText] = useState("");
   const [menuState, setMenuState] = useState(false);
-  const input: any = useRef();
+  const input = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // console.log(inputText);
@@ -45,7 +45,7 @@ export function SearchInput() {
 
         <input
           onChange={() => {
-            setInputText(input.current.value);
+            setInputText(input.current?.value ?? "");
           }}
           onClick={() => {
             setMenuState(true);

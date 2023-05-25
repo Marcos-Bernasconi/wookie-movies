@@ -1,5 +1,12 @@
-export function MovieDescription({ movie }: any) {
-  const date = movie.released_on.split("-")[0];
+import { FC } from "react";
+import { movie } from "../types/types";
+
+type Props = {
+  movie: movie;
+};
+
+export const MovieDescription: FC<Props> = ({ movie }) => {
+  const date = movie.released_on!.split("-")[0];
   return (
     <>
       <section className="mx-auto max-w-[100rem] flex-row items-center pt-8 lg:flex ">
@@ -26,8 +33,8 @@ export function MovieDescription({ movie }: any) {
               </div>
               <ul className="mt-8 flex flex-row gap-3">
                 Directors:
-                {movie.director.isArray ? (
-                  movie.director.map((directorName: string) => {
+                {movie!.director.isArray ? (
+                  movie!.director.map((directorName: string) => {
                     return (
                       <li
                         className="underline underline-offset-1 "
@@ -86,4 +93,4 @@ export function MovieDescription({ movie }: any) {
       </section>
     </>
   );
-}
+};
