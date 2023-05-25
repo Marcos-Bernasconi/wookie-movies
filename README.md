@@ -1,7 +1,7 @@
 
 ## Wookie Movie
 
-This is a movie streaming dashboard made with TypeScript and NextJS.
+This is a movie streaming dashboard made with TypeScript, NextJS and TailwindCss.
 
 
 ### Tasks
