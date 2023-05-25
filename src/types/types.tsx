@@ -5,8 +5,6 @@ export type movie = {
   genres?: string;
   backdrop?: string;
   slug?: string;
-  error?: string;
-
   released_on?: string;
   poster?: string;
   imdb_rating?: string;
@@ -14,6 +12,7 @@ export type movie = {
   overview?: string;
   director?: any;
   cast?: any;
+  error?: string;
 };
 
 export type moviesData = {

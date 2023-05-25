@@ -1,10 +1,18 @@
+import { FC } from "react";
 import Link from "next/link";
 
-export function SearchResult({ foundMovies, state }: any) {
+import { movie } from "../types/types";
+
+type Props = {
+  foundMovies: movie[];
+  state: boolean;
+};
+
+export const SearchResult: FC<Props> = ({ foundMovies, state }) => {
   let results;
   // console.log(state);
   if (foundMovies != null && state == true) {
-    results = foundMovies.map((movie: any) => {
+    results = foundMovies.map((movie) => {
       // console.log(movie);
       return (
         <Link href={`/movie/${movie.slug}`} key={movie.id}>
@@ -28,4 +36,4 @@ export function SearchResult({ foundMovies, state }: any) {
       </div>
     </>
   );
-}
+};

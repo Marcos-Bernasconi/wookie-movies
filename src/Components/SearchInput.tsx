@@ -1,8 +1,10 @@
 import { SearchResult } from "./SeatchResult";
 import { useState, useEffect, useRef } from "react";
 
+import { movie } from "../types/types";
+
 export function SearchInput() {
-  const [foundMovies, setFoundMovies] = useState();
+  const [foundMovies, setFoundMovies] = useState<movie[]>([]);
   const [inputText, setInputText] = useState("");
   const [menuState, setMenuState] = useState(false);
   const input = useRef<HTMLInputElement>(null);
